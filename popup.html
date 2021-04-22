@@ -1,16 +1,93 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <style>
-      button {
-        height: 30px;
-        width: 30px;
-        outline: none;
+      body {
+        background-color: #fbfbfa;
+        color: #402432;
+      }
+      .btn {
+        /*height: 30px;
+        width: 30px;*/
+        color: white;
+        display: block;
+        border-radius: calc(8rem / 16);
+        text-align: center;
+        padding: 0.5rem;
+        border: none;  /* 枠線を消す */
+        outline: none; /* クリックしたときに表示される枠線を消す */
+        position: relative;
+        z-index: 2;
+        will-change: transform, filter;
+        transform-style: preserve-3d;
+        transition: all .3s ease-out;
+      }
+      .btn:hover {
+        transform: scale(0.95);
+      }
+      .btn::before {
+        content: "";
+        height: 40px;
+        display: inline-block;
+        position: absolute;
+        left: 30px;
+        right: 30px;
+        bottom: -5px;
+        z-index: -1;
+        border-radius: 50px;
+        opacity: .8;
+        filter: blur(15px);
+        transform-style: preserve-3d;
+        transition: all .3s ease-out;
+      }
+      .btn:hover::before {
+        bottom: 0;
+        filter: blur(8px);
+      }
+      .gradient1,
+      .gradient1::before {
+        background: -moz-linear-gradient(left, #9d6286 0%, #804766 80%, #5f354b 100%);
+        background: -webkit-linear-gradient(left, #9d6286 0%, #804766 80%, #5f354b 100%);
+        background: linear-gradient(to right, #9d6286 0%, #804766 80%, #5f354b 100%);
+      }
+      .real-shadow {
+        box-shadow:
+          0 1.9px 2.5px rgba(0, 0, 0, 0.057),
+          0 5px 6.1px rgba(0, 0, 0, 0.076),
+          0 10.1px 11.4px rgba(0, 0, 0, 0.086),
+          0 19.2px 19.8px rgba(0, 0, 0, 0.092),
+          0 38.4px 34.8px rgba(0, 0, 0, 0.1),
+          0 101px 74px rgba(0, 0, 0, 0.13);
+      }
+      .real-shadow::after {
+        /* 疑似要素で同じ大きさのboxを作り、position: absoluteで背面に表示 */
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        /* ①疑似要素のボックスを影色で塗りつぶし */
+        background-color: #F8ABA6;
+        /* ②ブラーフィルターでぼかす */
+        filter: blur(15px);
+        /* ③位置やサイズを調整 */
+        transform: translateY(10px) scale(1.05);
+        /* ④乗算で重ねる */
+        mix-blend-mode: multiply;
       }
     </style>
   </head>
   <body>
-    <button id="changeColor"></button>
+    <p>桜を散らしたいタブで、ボタンを押すと桜が舞います。</p>
+    <button type="button" id="change-color" class="btn real-shadow gradient1" style="width: 11rem; margin-top: 1.5rem; margin-bottom: 1.5rem;">
+      🌸&nbsp;を散らせる
+    </button>
+    <p>途中でやめたい時は、タブをリロードしてください。</p>
     <script src="popup.js"></script>
   </body>
 </html>

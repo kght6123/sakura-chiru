@@ -1,8 +1,8 @@
 // 1)popup.htmlの中のボタンの要素を取得
-let changeColor = document.getElementById("changeColor");
+let changeColor = document.getElementById("change-color");
 chrome.storage.sync.get("color", function (data) {
   // backgroud.jsの中で定義したcolorの値を取得して1)で取得したボタンの背景色に設定
-  changeColor.style.backgroundColor = data.color;
+  // changeColor.style.backgroundColor = data.color;
   // 3)ボタンの要素に1)で取得した値をvalueの値として定義
   changeColor.setAttribute("value", data.color);
 });

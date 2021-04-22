@@ -1,14 +1,13 @@
 {
   "name": "桜散る",
   "version": "1.0",
-  "description": "全てのサイトに桜の花びらを散らすことが出来ます。リモートお花見などにどうぞ！",
+  "description": "タブの中に桜の花びらを散らすことが出来ます。リモートお花見などにどうぞ！",
   "permissions": [
     "declarativeContent",
     "storage",
     "tabs",
     "background",
-    "http://*/*",
-    "https://*/*"
+    "activeTab"
   ],
   "background": {
     "scripts": ["background.js"],
